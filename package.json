@@ -2,12 +2,15 @@
   "name": "qishui",
   "version": "0.0.1",
   "bin": {
-    "fy": "src/cli.ts"
+    "fy": "dist/cli.js"
   },
   "scripts": {
     "start": "ts-node-dev src/main.ts"
   },
-  "main": "index.js",
+  "files": [
+    "dist/**/*.js"
+  ],
+  "main": "dist/main.js",
   "license": "MIT",
   "dependencies": {
     "commander": "^9.0.0",
