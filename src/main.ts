@@ -21,13 +21,19 @@ export const translate = (words) => {
 
   const salt = Math.random()
   const sign = md5(appId + words + salt + appSecret)
+  let from, to
+  if (/[a-zA-Z]/.test(words[0])) {
+    // 英译中
+    from = 'en'
+    to = 'zh'
+  } else {
+    // 中译英
+    from = 'zh'
+    to = 'en'
+  }
   const query: string = querystring.stringify({
-    q: words,
-    from: 'en',
-    to: 'zh',
-    appid: appId,
-    salt,
-    sign
+    q: words, appid: appId,
+    from, to, salt, sign
   })
 
   const options = {
@@ -58,7 +64,9 @@ export const translate = (words) => {
         console.error(errorMap[obj.error_code] || obj.error_msg)
         process.exit(2);
       } else {
-        console.log(obj.trans_result[0].dst)
+        obj.trans_result.map(item => {
+          console.log(item.dst)
+        })
         process.exit(0);
 
       }

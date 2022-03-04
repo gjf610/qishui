@@ -1,6 +1,9 @@
 {
   "name": "qishui",
   "version": "0.0.1",
+  "bin": {
+    "fy": "src/cli.ts"
+  },
   "scripts": {
     "start": "ts-node-dev src/main.ts"
   },
