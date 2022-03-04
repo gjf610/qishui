@@ -1,0 +1,4 @@
+/src/private.ts
+node_modules
+.vscode
+.idea
